@@ -1,3 +1,5 @@
+package oop.lesson.one;
+
 public class Product {
     //    Создание полей класса
     private String name;
@@ -29,7 +31,7 @@ public class Product {
     //    Переопределяем toString
     @Override
     public String toString() {
-        return "\n" + "Product " +
+        return "\n" + "oop.lesson.one.Product " +
                 "name = '" + name + '\'' +
                 ", price = " + price +
                 " руб.";

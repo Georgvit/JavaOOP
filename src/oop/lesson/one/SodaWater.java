@@ -1,3 +1,5 @@
+package oop.lesson.one;
+
 public class SodaWater extends Product {
 
     //    Добавляем поле в класс

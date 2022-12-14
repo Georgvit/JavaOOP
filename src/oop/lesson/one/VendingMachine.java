@@ -1,3 +1,5 @@
+package oop.lesson.one;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -47,7 +49,7 @@ public class VendingMachine {
     public String toString() {
         StringBuilder temp = new StringBuilder();
         listProducts.forEach(s -> temp.append(s.toString()));
-        return "VendingMachine: \n" +
+        return "oop.lesson.one.VendingMachine: \n" +
                 "listProducts:" + temp;
     }
 }
