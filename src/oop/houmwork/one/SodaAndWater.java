@@ -1,14 +1,12 @@
 package oop.houmwork.one;
 
-import oop.lesson.one.Product;
-
-public class SodaWater extends Product {
+public class SodaAndWater extends Products {
 
     //    Добавляем поле в класс
     private String flavor;
 
     //    Создаем конструктор с параметрами
-    public SodaWater(String name, double price, String flavor) {
+    public SodaAndWater(String name, double price, String flavor) {
         super(name, price);
         this.setFlavor(flavor);
     }
@@ -22,10 +20,12 @@ public class SodaWater extends Product {
         this.flavor = flavor;
     }
 
+
+
     //    Переопределяем toString
     @Override
     public String toString() {
-        return super.toString() + "" +
+        return super.toString()  +
                 " flavor product = " + flavor;
     }
 }

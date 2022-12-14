@@ -1,12 +1,12 @@
 package oop.houmwork.one;
 
-public class Product {
+public class Products {
     //    Создание полей класса
     private String name;
     private double price;
 
     //  Создаем конструктор с параметрами
-    public Product(String name, double price) {
+    public Products(String name, double price) {
         this.name = name;
         this.price = price;
     }
@@ -31,7 +31,7 @@ public class Product {
     //    Переопределяем toString
     @Override
     public String toString() {
-        return "\n" + "oop.lesson.one.Product " +
+        return "\n" + "Products " +
                 "name = '" + name + '\'' +
                 ", price = " + price +
                 " руб.";

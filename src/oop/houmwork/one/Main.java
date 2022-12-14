@@ -1,30 +1,26 @@
 package oop.houmwork.one;
 
-import oop.lesson.one.Product;
-import oop.lesson.one.SodaWater;
-import oop.lesson.one.VendingMachine;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Product water = new Product("Soda", 34.4);
-//        System.out.println(water);
+        Products water = new Products("Soda", 34.4);
 
-        VendingMachine machineOne = new VendingMachine();
+        VendingMachines machineOne = new VendingMachines();
         System.out.println(machineOne);
 
         System.out.println();
 
-        List<Product> merchandise = new ArrayList<>();
+        List<Products> merchandise = new ArrayList<>();
         merchandise.add(water);
-        merchandise.add(new Product("wine", 400));
-        merchandise.add(new Product("cheese", 23.7));
-        merchandise.add(new Product("meet", 13.7));
-        merchandise.add(new SodaWater("Cola", 1.2, "coll"));
+        merchandise.add(new Products("wine", 400));
+        merchandise.add(new Products("cheese", 23.7));
+        merchandise.add(new Products("meet", 13.7));
+        merchandise.add(new SodaAndWater("Cola", 1.2, "coll"));
 
-        VendingMachine machineTwo = new VendingMachine(merchandise);
+
+        VendingMachines machineTwo = new VendingMachines(merchandise);
         System.out.println(machineTwo);
         System.out.println();
         System.out.println(machineTwo.filterName("meet"));
@@ -32,6 +28,21 @@ public class Main {
         System.out.println(machineTwo.filterPriceRange(13, 30));
         System.out.println();
         System.out.println(machineTwo.filterPrice(13.7));
+
+        List<Products> merchandiseFruit = new ArrayList<>();
+        merchandiseFruit.add(new Fruit("apple", 10.1, TypeFruit.SEEDS));
+        merchandiseFruit.add(new Fruit("pear", 11.2, TypeFruit.SEEDS));
+        merchandiseFruit.add(new Fruit("apricot", 9.5, TypeFruit.STONE));
+        merchandiseFruit.add(new Fruit("plum", 10, TypeFruit.STONE));
+        merchandiseFruit.add(new Fruit("orange", 10.1, TypeFruit.CITRUS));
+        merchandiseFruit.add(new Fruit("lime", 10.1, TypeFruit.CITRUS));
+        merchandiseFruit.add(new Fruit("banana", 10.1, TypeFruit.TROPICAL));
+        merchandiseFruit.add(new Fruit("figs", 10.1, TypeFruit.TROPICAL));
+
+        System.out.println(merchandiseFruit);
+        VendingMachines machineThree = new VendingMachines(merchandiseFruit);
+        System.out.println(machineThree.filterName("apple"));
+
 
 
     }
