@@ -1,5 +1,6 @@
 package oop.lesson.two;
 
+//Создаем класс Кот
 public class Cat extends Animal implements Speakable, Runable {
     public Cat(String animalName, int legs, String owner) {
         super(animalName, legs, owner);

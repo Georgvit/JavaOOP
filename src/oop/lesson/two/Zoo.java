@@ -1,10 +1,10 @@
 package oop.lesson.two;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 
+//Клас объединяющий животных
 public class Zoo {
     List<Animal> animals = new ArrayList<>();
 
@@ -13,14 +13,14 @@ public class Zoo {
         return this;
     }
 
-    private List<Speakable> getSpeakable() {
+    public List<Speakable> getSpeakable() {
         List<Speakable> temp = new ArrayList<>();
         for (Animal item : animals) {
             if (item instanceof Speakable) {
                 temp.add((Speakable) item);
             }
         }
-        temp.add(new Radio());
+//        temp.add(new Radio());
         return temp;
     }
 
@@ -89,12 +89,20 @@ public class Zoo {
     }
 
     public String getName(Integer index) {
-
-        String temp = getNames().get(index);
-        return temp;
+        return getNames().get(index);
     }
 
     public List<Animal> getAnimals() {
         return animals;
+    }
+
+    public List<Swimable> getSwimable() {
+        List<Swimable> temp = new ArrayList<>();
+        for (Animal item : animals) {
+            if (item instanceof Swimable) {
+                temp.add((Swimable) item);
+            }
+        }
+        return temp;
     }
 }

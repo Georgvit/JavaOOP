@@ -1,5 +1,6 @@
 package oop.lesson.two;
 
+//Создаем абстрактный класс
 public abstract class Animal {
     private String animalName;
     private int legs;
@@ -10,6 +11,7 @@ public abstract class Animal {
         this.legs = legs;
         this.owner = owner;
     }
+
 
 
     public String getAnimalName() {
