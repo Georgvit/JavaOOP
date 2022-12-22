@@ -3,7 +3,7 @@ package oop.houmwork.three;
 
 import java.util.Iterator;
 
-public class MyList implements Iterable<Integer>{
+public class MyList<E> implements Iterable<E> {
     private Node first;
     private Node last;
 
@@ -12,71 +12,68 @@ public class MyList implements Iterable<Integer>{
         last = null;
     }
 
-    private boolean isEmpty(){
+    private boolean isEmpty() {
         return first == null;
     }
 
-//    Добавляем элемент в начало списка
-    public void addInFirst(int data){
+    //    Добавляем элемент в начало списка
+    public void addInFirst(E data) {
         Node temp = new Node(data);
 
-        if (isEmpty()){
+        if (isEmpty()) {
             last = temp;
-        }
-        else {
+        } else {
             first.prev = temp;
         }
         temp.next = first;
         first = temp;
     }
 
-//    Добавляем элемент в конец списка
-    public void addInLast(int data){
+    //    Добавляем элемент в конец списка
+    public void addInLast(E data) {
         Node temp = new Node(data);
-        if (isEmpty()){
+        if (isEmpty()) {
             first = temp;
-        }
-        else
+        } else
             last.next = temp;
         temp.prev = last;
     }
 
     @Override
-    public Iterator<Integer> iterator() {
-        return new Iterator<Integer>() {
+    public Iterator<E> iterator() {
+        return new Iterator<E>() {
             Node temp = first;
 
             @Override
             public boolean hasNext() {
                 if (last != null) {
                     last = temp.prev;
-                }
-                else temp = temp.next;
+                } else temp = temp.next;
                 return temp != null;
             }
 
             @Override
-            public Integer next() {
-                return temp.getData();
+            public E next() {
+                return (E) temp.getData();
             }
         };
     }
 
-
-    private static class Node {
+    // Создаем узел
+    private static class Node<E> {
         //  Элемент списка
-        public int data;
+        public E data;
         //   Ссылка на следующий элемент
         public Node next;
 
         //   Ссылка на предыдущий элемент
         public Node prev;
 
-        public int getData() {
+        public E getData() {
             return data;
         }
 
-        public Node(int data) {
+        public Node(E data) {
             this.data = data;
         }
     }
