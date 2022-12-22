@@ -10,6 +10,7 @@ public class Main {
         myList.addInFirst(19);
         myList.addInFirst(17);
         myList.addInFirst(66);
+        myList.addInLast(55);
 
         for (Integer item: myList) {
             System.out.println(item);

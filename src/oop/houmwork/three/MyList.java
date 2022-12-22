@@ -16,6 +16,7 @@ public class MyList implements Iterable<Integer>{
         return first == null;
     }
 
+//    Добавляем элемент в начало списка
     public void addInFirst(int data){
         Node temp = new Node(data);
 
@@ -27,6 +28,17 @@ public class MyList implements Iterable<Integer>{
         }
         temp.next = first;
         first = temp;
+    }
+
+//    Добавляем элемент в конец списка
+    public void addInLast(int data){
+        Node temp = new Node(data);
+        if (isEmpty()){
+            first = temp;
+        }
+        else
+            last.next = temp;
+        temp.prev = last;
     }
 
     @Override
