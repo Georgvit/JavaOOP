@@ -1,4 +1,8 @@
 package oop.houmwork.four;
 
-public class Shield {
+public abstract class Shield implements Armor {
+    @Override
+    public int protection() {
+        return 100;
+    }
 }

@@ -1,8 +1,8 @@
 package oop.houmwork.four;
 
-public class Comandor extends Warrior<Weapon> {
-    public Comandor(String name, Weapon weapon, int healthPoint) {
-        super(name, weapon, healthPoint);
+public class Comandor extends Warrior<Weapon, Shield> {
+    public Comandor(String name, Weapon weapon, Shield shield, int healthPoint) {
+        super(name, weapon, shield, healthPoint);
     }
 
     @Override

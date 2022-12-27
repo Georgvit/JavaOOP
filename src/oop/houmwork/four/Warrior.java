@@ -1,13 +1,16 @@
 package oop.houmwork.four;
 
-public abstract class Warrior<T extends Weapon> {
+public abstract class Warrior<T extends Weapon, S extends Shield> {
     private String name;
     private T weapon;
+
+    private S shield;
     private int healthPoint;
 
-    public Warrior(String name, T weapon, int healthPoint) {
+    public Warrior(String name, T weapon, S shield, int healthPoint) {
         this.name = name;
         this.weapon = weapon;
+        this.shield = shield;
         this.healthPoint = healthPoint;
     }
 
@@ -21,6 +24,10 @@ public abstract class Warrior<T extends Weapon> {
 
     public Weapon getWeapon() {
         return weapon;
+    }
+
+    public S getShield() {
+        return shield;
     }
 
     public void setWeapon(T weapon) {
@@ -39,6 +46,7 @@ public abstract class Warrior<T extends Weapon> {
     public String toString() {
         return "позывной: '" + name + '\'' +
                 "/ оружие: " + weapon +
+                "/ доспехи: " + shield +
                 "/ здоровье: " + healthPoint;
     }
 }
