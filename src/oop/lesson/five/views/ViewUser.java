@@ -113,7 +113,7 @@ public class ViewUser {
     }
 
     private void greeting(){
-        System.out.println("Список команд справочника:");
+        System.out.println("\nСписок команд справочника:");
         System.out.println(Commands.CREATE + " - создание новой записи. \n" +
                 Commands.READ +  " - чтение записи по ID. \n" +
                 Commands.UPDATE + " - обновление записи. \n" +

@@ -17,6 +17,10 @@ public class FileOperationImpl implements FileOperation {
         }
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
     public List<String> readAllLines() {
         List<String> lines = new ArrayList<>();
         try {

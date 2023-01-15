@@ -5,21 +5,29 @@ import oop.lesson.five.model.*;
 import java.util.Scanner;
 
 public class SelectionFormat {
+    private int selectionUser;
 
     public Repository selectedFormat() {
+        String formFile;
+        selectionUser = prompt();
+        UserMapper userMapper;
+        if (selectionUser == 1) {
+            formFile = "users.txt";
+            userMapper = new UserMapper();
+        } else {
+            formFile = "htmlUsers.html";
+            userMapper = new NewUserMapper();
+        }
+        FileOperation fileOperation = new FileOperationImpl(formFile);
+        return new RepositoryFile(fileOperation, userMapper);
+
+    }
+
+    private int prompt() {
         System.out.println("Выберите формат работы с документом:");
-        System.out.println("1. TXT \n2. json");
+        System.out.println("1. TXT \n2. html");
         System.out.println("Введите пункт меню:");
         Scanner in = new Scanner(System.in);
-        int selection = Integer.parseInt(in.nextLine().toUpperCase());
-        if (selection == 1) {
-            FileOperation fileOperation = new FileOperationImpl("users.txt");
-            return new RepositoryFile(fileOperation);
-
-        } else {
-            FileOperation fileOperation2 = new JFileOperationImpl("jsonUsers.txt");
-            return new RepositoryFile(fileOperation2);
-        }
-
+        return Integer.parseInt(in.nextLine().toUpperCase());
     }
 }
