@@ -6,4 +6,7 @@ public interface Repository {
     List<User> getAllUsers();
     String CreateUser(User user);
     void UpdateUser(User user, String idUser);
+    void DeleteAllUsers();
+
+    void DeleteSelectionUsers(String idUser);
 }

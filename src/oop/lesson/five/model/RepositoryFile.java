@@ -28,21 +28,29 @@ public class RepositoryFile implements Repository {
         int max = 0;
         for (User item : users) {
             int id = Integer.parseInt(item.getId());
-            if (max < id){
+            if (max < id) {
                 max = id;
             }
         }
         int newId = max + 1;
         String id = String.format("%d", newId);
+
         user.setId(id);
-        users.add(user);
-        List<String> lines = new ArrayList<>();
-        for (User item: users) {
-            lines.add(mapper.map(item));
+        if (user.getId().isEmpty()) {
+            System.out.println("Не возможно создать ID");
+            return null;
+        } else {
+            users.add(user);
+            List<String> lines = new ArrayList<>();
+            for (User item : users) {
+                lines.add(mapper.map(item));
+            }
+
+            fileOperation.saveAllLines(lines);
+            return id;
         }
-        fileOperation.saveAllLines(lines);
-        return id;
     }
+
 
     @Override
     public void UpdateUser(User user, String idUser) {
@@ -50,7 +58,7 @@ public class RepositoryFile implements Repository {
         user.setId(idUser);
         List<User> users = getAllUsers();
         for (int i = 0; i < users.size(); i++) {
-            if (i == idUsers -1){
+            if (i == idUsers - 1) {
                 users.remove(i);
                 users.add(i, user);
             }
@@ -58,7 +66,30 @@ public class RepositoryFile implements Repository {
         }
 
         List<String> lines = new ArrayList<>();
-        for (User item: users) {
+        for (User item : users) {
+            lines.add(mapper.map(item));
+        }
+        fileOperation.saveAllLines(lines);
+    }
+
+    @Override
+    public void DeleteAllUsers() {
+        List<String> lines = new ArrayList<>();
+        fileOperation.saveAllLines(lines);
+    }
+
+    @Override
+    public void DeleteSelectionUsers(String idUser) {
+        int idUsers = Integer.parseInt(idUser);
+        List<User> users = getAllUsers();
+        for (int i = 0; i < users.size(); i++) {
+            if (i == idUsers - 1) {
+                users.remove(i);
+            }
+        }
+
+        List<String> lines = new ArrayList<>();
+        for (User item : users) {
             lines.add(mapper.map(item));
         }
         fileOperation.saveAllLines(lines);

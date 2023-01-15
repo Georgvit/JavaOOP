@@ -2,7 +2,6 @@ package oop.lesson.five.views;
 
 import oop.lesson.five.controllers.UserController;
 import oop.lesson.five.model.User;
-
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,6 +17,7 @@ public class ViewUser {
         Commands com = Commands.NONE;
 
         while (true) {
+            greeting();
             String command = prompt("Введите команду: ");
             com = Commands.valueOf(command);
             if (com == Commands.EXIT) return;
@@ -40,8 +40,8 @@ public class ViewUser {
                 case LIST:
                     try {
                         List<User> users = userController.readUserList();
-                        for (User user: users) {
-                            System.out.println(user);
+                        for (User user : users) {
+                            System.out.println(user + "\n");
                         }
                     } catch (Exception e) {
                         throw new RuntimeException(e);
@@ -51,7 +51,7 @@ public class ViewUser {
                     id = prompt("Идентификатор пользователя: ");
                     try {
                         User user = userController.readUser(id);
-                        switch (parameterSelection()){
+                        switch (parameterSelection()) {
                             case 1:
                                 String newFirstName = prompt("Имя: ");
                                 user.setFirstName(newFirstName);
@@ -76,13 +76,32 @@ public class ViewUser {
                         throw new RuntimeException(e);
                     }
                     break;
+
+                case DELETE:
+                    switch (deleteSelection()) {
+                        case 1:
+                            id = prompt("Идентификатор пользователя: ");
+                            userController.deleteSelectionDate(id);
+                            break;
+                        case 2:
+                            userController.deleteAllDate();
+                            break;
+                    }
+
             }
         }
     }
 
-    private int parameterSelection(){
+    private int parameterSelection() {
         System.out.println("Какие параметры хотите изменить?");
         System.out.println("1. Имя \n2.Фамилия \n3.Телефон");
+        int selection = Integer.parseInt(prompt("Введите пункт меню:"));
+        return selection;
+    }
+
+    private int deleteSelection() {
+        System.out.println("Какие данные удалить?");
+        System.out.println("1. Все данные пользователя \n2. Все данные в справочнике");
         int selection = Integer.parseInt(prompt("Введите пункт меню:"));
         return selection;
     }
@@ -90,6 +109,18 @@ public class ViewUser {
     private String prompt(String message) {
         Scanner in = new Scanner(System.in);
         System.out.print(message);
-        return in.nextLine();
+        return in.nextLine().toUpperCase();
     }
+
+    private void greeting(){
+        System.out.println("Список команд справочника:");
+        System.out.println(Commands.CREATE + " - создание новой записи. \n" +
+                Commands.READ +  " - чтение записи по ID. \n" +
+                Commands.UPDATE + " - обновление записи. \n" +
+                Commands.LIST + " - вывод всех записей. \n" +
+                Commands.DELETE + " - удаление записей. \n" +
+                Commands.EXIT + " - выход из программы. \n");
+    }
+
+
 }
